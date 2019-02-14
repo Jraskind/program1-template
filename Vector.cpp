@@ -5,6 +5,17 @@ Vector::Vector(){
 	
 }
 
+Vector::~Vector(){
+	for(int i = 0; i < capacity; i++){
+		if(vectorArr[i] == NULL){
+		}
+		else{
+			delete vectorArr[i];
+		}
+	
+	}
+	delete[] vectorArr;
+}
 
 
 unsigned Vector::size(){
