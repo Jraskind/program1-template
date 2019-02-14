@@ -5,6 +5,9 @@
 
 class List{
 public:
+	Node* headPtr;
+	Node* tailPtr;
+
 	List();
 	~List();
 	void insert(int, Planet*);
@@ -15,7 +18,9 @@ public:
 
 class Node{
 public:
-	
+	Planet* planet;
+	Node* next;
+	Node* previous; 
 }
 
 #endif
