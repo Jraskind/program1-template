@@ -70,5 +70,22 @@ Planet* read(int index){
 
 bool remove(int index){
 
+	if(index < 0 || index == capacity || index > capacity) return FALSE;
+
+	Planet ** temp = new Planet*[capacity - 1];
+	for(int i = 0; i < index; i++){
+		temp[i] = vectorArr[i];
+
+	}
+
+	if(vectorArr[index] != NULL) delete vectorArr[index];
+
+	for(int i = index+1; i < capacity; i++){
+		temp[i - 1] = vectorArr[i];
+	}
+	
+	delete[] vectorArr;
+	vectorArr = temp;
+	return TRUE;
 }
 
