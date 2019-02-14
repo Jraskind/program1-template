@@ -16,7 +16,7 @@
 
 */
 #ifndef Vector_JR
-#define Vector
+#define Vector_JR
 #include "Planet.h"
 
 class Vector{
