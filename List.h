@@ -3,6 +3,14 @@
 
 #include "Planet.h"
 
+
+class Node{
+public:
+	Planet* planet;
+	Node* next;
+	Node* previous; 
+}
+
 class List{
 public:
 	Node* headPtr;
@@ -16,11 +24,5 @@ public:
 	unsigned size();
 }
 
-class Node{
-public:
-	Planet* planet;
-	Node* next;
-	Node* previous; 
-}
 
 #endif
