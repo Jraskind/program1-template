@@ -2,8 +2,8 @@
 #include <iostream>
 #include <cstdlib>
 
-Planet::Planet(int distance, int id){
-	this->id = id;
+Planet::Planet(int distance){
+	this->id = this;
 	this->distance = distance;
     	this->pos = rand() % 359;
 	char const * types = "hrg";
