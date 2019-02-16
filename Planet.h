@@ -2,7 +2,7 @@
 #define PLANET_JR
 class Planet{
 	private:
-		int id;
+		long int id;
 		int pos;
 		int distance;
 		char type;

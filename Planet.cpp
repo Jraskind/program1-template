@@ -3,7 +3,7 @@
 #include <cstdlib>
 
 Planet::Planet(int distance){
-	this->id = this;
+	this->id = (long int) this;
 	this->distance = distance;
     	this->pos = rand() % 359;
 	char const * types = "hrg";
