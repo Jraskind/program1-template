@@ -84,7 +84,7 @@ Planet* Vector::read(int index){
 bool Vector::remove(int index){
 
 	if(index < 0 || index >= capacity) return false;
-	
+
 	Planet ** temp = new Planet*[capacity - 1];
 	for(int i = 0; i < index; i++){
 		temp[i] = vectorArr[i];

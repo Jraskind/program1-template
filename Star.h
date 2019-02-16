@@ -54,6 +54,6 @@ public:
     	Planet * getPlanet(int);
    	void orbit();
     	void printStarInfo();
-    	unsigned int getCurrentNumPlanets();
+    	unsigned int getCurrentNumPlanets(){return current_planets;};
 };
 #endif
