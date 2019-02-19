@@ -1,65 +1,109 @@
 #include "List.h"
+#include <iostream>
+
+using namespace std;
 
 List::List(){
 	this->headPtr = NULL;
 	this->tailPtr = NULL;
 }
 
+Node::Node(){
+	this->next = NULL;
+	this->previous = NULL;
+	this->planet = NULL;
+}
+
 List::~List(){
 	//delete nodes of linkedlist
+	Node* temp = headPtr;
+	for(int i = 0; i < size(); i++){
+		temp = temp->next;
+		delete temp;
+	}
+	delete headPtr;
 }
 
 void List::insert(int index, Planet* p){
-	//Reference the currentNode being traversed
-	//Create a new node to be inserted and set its planet ptr to the parameter
-	Node* currentNode = this->headPtr;
-	Node* newNode = new Node();
-	(*newNode).planet = p;
 
-	//No headPtr means start of list, set newNode to headPtr
-	if (headPtr == NULL){
-		headPtr = newNode;
-		
+	if(index < 0) return;
+
+	Node* newNode = new Node();
+	newNode->planet = p;
+
+	//No headPtr means first element into list
+	if (this->headPtr == NULL){
+		this->headPtr = newNode;
+		this->tailPtr = newNode;
+		return;
 	}
 
-	tailPtr = newNode;
+	//Keep track of ahead and behind nodes
+	Node* nodeBehind = this->headPtr;
+	Node* nodeAhead = this->tailPtr;
 
-	//Verify the index input is valid
+	//Index larger than size of list means push to end
 	if (index > size()){
-		tailPtr.next = newNode;
-		newNode.previous = tailPtr;
+		nodeAhead->next = newNode;
 		tailPtr = newNode;
+		newNode->previous = nodeAhead;
+		return;
 	};
 
+	//If neither of the above cases, traverse the list
+	//and input into the correct location
+
 	for(int i = 0; i < index - 1; i++){
-		currentNode = currentNode.next;
+		nodeBehind = nodeBehind->next;
 	}
-	
-	currentNode.next.previous = newNode;
-	(*newNode).next = currentNode.next.previous;
 
-	currentNode.next = newNode;
-	(*newNode).previous = currentNode;
+	while(nodeAhead->previous != nodeBehind){
+		nodeAhead = nodeAhead->previous;
+	}
 
+	//Reconfigure the linked list
+	nodeBehind->next = newNode;
+	nodeAhead->previous = newNode;
 
-	//Increase list size by 1
-	size()
+	newNode->next = nodeAhead;
+	newNode->previous = nodeBehind;
 }
 
 Planet* List::read(int index){
-	if (index > size()) return NULL;
+	if (index > size() || index < 0) return NULL;
 
 	Node* currentNode = this->headPtr;
 	for(int i = 0; i < index; i++){
-		currentNode = currentNode.next;
+		currentNode = currentNode->next;
 	}
-	return currentNode.planet; 
+	return currentNode->planet;
 }
 
 bool List::remove(int index){
+	if (index > size() || index < 0) return false;
 
+	Node* nodeAhead = this->tailPtr;
+	Node* nodeBehind = this->headPtr;
+	for(int i = 0; i < index - 1; i++){
+		nodeBehind = nodeBehind->next;
+	}
+
+	while(nodeAhead->previous != nodeAhead->next){
+		nodeAhead = nodeAhead->previous;
+	}
+
+	nodeBehind->next = NULL;
+	nodeBehind->next = nodeAhead;
+	nodeAhead->previous = nodeBehind;
+	return true;
 }
 
 unsigned List::size(){
-
+	unsigned retVal = 0;
+	Node* temp = headPtr;
+	while(temp != NULL){
+		temp = temp->next;
+		retVal++;
+	}
+	return retVal;
 }

@@ -6,23 +6,25 @@
 
 class Node{
 public:
+	Node();
 	Planet* planet;
 	Node* next;
-	Node* previous; 
-}
+	Node* previous;
+};
 
 class List{
-public:
+private:
 	Node* headPtr;
 	Node* tailPtr;
 
+public:
 	List();
 	~List();
 	void insert(int, Planet*);
 	Planet* read(int);
 	bool remove(int);
 	unsigned size();
-}
+};
 
 
 #endif
