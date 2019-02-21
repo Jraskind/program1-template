@@ -90,7 +90,7 @@ long Starlist::addPlanet(){
 	return p->getID();	
 }
 
-bool Starlist::removePlanet(int index){
+bool Starlist::removePlanet(int id){
 	Planet * tempPlanet = NULL;
 
 	for(int i = 0; i < current_planets; i++){
@@ -103,11 +103,10 @@ bool Starlist::removePlanet(int index){
 
 	}
 
-
 	return false;
 }
 
-Planet* Starlist::getPlanet(int){
+Planet* Starlist::getPlanet(int id){
 	Planet * tempPlanet = NULL;
 	for(int i = 0; i < current_planets; i++){
 		tempPlanet = list->read(i);
