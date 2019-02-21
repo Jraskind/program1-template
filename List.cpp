@@ -17,14 +17,16 @@ Node::Node(){
 List::~List(){
 	//delete nodes of linkedlist
 	Node* temp = headPtr;
-	for(int i = 0; i < size(); i++){
-		temp = temp->next;
-		delete temp;
+	while(headPtr != NULL){
+		delete temp->planet;
+		temp = headPtr->next;
+		delete headPtr;
+		headPtr = temp;
 	}
-	delete headPtr;
 }
 
 void List::insert(int index, Planet* p){
+
 
 	if(index < 0) return;
 
@@ -43,7 +45,7 @@ void List::insert(int index, Planet* p){
 	Node* nodeAhead = this->tailPtr;
 
 	//Index larger than size of list means push to end
-	if (index > size()){
+	if (index >= size()){
 		nodeAhead->next = newNode;
 		tailPtr = newNode;
 		newNode->previous = nodeAhead;
@@ -82,17 +84,20 @@ Planet* List::read(int index){
 bool List::remove(int index){
 	if (index > size() || index < 0) return false;
 
+
 	Node* nodeAhead = this->tailPtr;
 	Node* nodeBehind = this->headPtr;
 	for(int i = 0; i < index - 1; i++){
 		nodeBehind = nodeBehind->next;
 	}
 
-	while(nodeAhead->previous != nodeAhead->next){
+	while(nodeAhead->previous != nodeBehind->next){
 		nodeAhead = nodeAhead->previous;
 	}
 
-	nodeBehind->next = NULL;
+	delete nodeBehind->next->planet;
+	delete nodeBehind->next;
+
 	nodeBehind->next = nodeAhead;
 	nodeAhead->previous = nodeBehind;
 	return true;

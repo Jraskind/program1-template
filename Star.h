@@ -2,22 +2,7 @@
 #define Star_JR
 #include "Planet.h"
 #include "Vector.h"
-class Star{
-	private:
-		int current_planets;
-	public:
-		Planet** planets;
-		Star();
-		~Star();
-		int addPlanet();
-		Planet * getPlanet(long int);
-		bool removePlanet(int);
-		Planet getFurthest();
-		void orbit();
-		void printStarInfo();
-		int getCurrentNumPlanets(){return current_planets;}
-        //you may add any additional methodas you may need.
-};
+#include "List.h"
 /* 
 
     Starvector()
@@ -56,4 +41,33 @@ public:
     	void printStarInfo();
     	unsigned int getCurrentNumPlanets(){return current_planets;};
 };
+
+class Starlist{
+private:
+	unsigned int current_planets;
+	List * list;
+public:
+	Starlist();
+	~Starlist();
+	long addPlanet();
+	bool removePlanet(int);
+	Planet* getPlanet(int);
+	void orbit();
+	void printStarInfo();
+	unsigned int getCurrentNumPlanets(){return current_planets;};
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #endif
