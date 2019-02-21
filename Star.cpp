@@ -72,7 +72,7 @@ void Starvector::printStarInfo(){
 	cout << "Planet " << tempPlanet->getType() << tempPlanet->getID() << " is " << tempPlanet->getDistance() << " miles away at position " << tempPlanet->getPos() << " around the star." << endl;
 }
 
-
+}
 
 Starlist::Starlist(){
 	list = new List();
