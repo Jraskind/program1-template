@@ -85,7 +85,8 @@ Starlist::~Starlist(){
 
 long Starlist::addPlanet(){
 	Planet * p = new Planet((rand() % 3000 + 1));
-	list->insert(0, p);
+	list->insert(3, p);
+	cout << "ran once" << endl;
 	current_planets++;
 	return p->getID();	
 }
