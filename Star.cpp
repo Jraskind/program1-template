@@ -29,7 +29,7 @@ bool Starvector::removePlanet(int id){
 
 	for(int i = 0; i < current_planets; i++){
 		tempPlanet = vect->read(i);
-		
+
 		if(tempPlanet->getID() == id){
 			current_planets--;
 			return vect->remove(i);
@@ -86,9 +86,8 @@ Starlist::~Starlist(){
 long Starlist::addPlanet(){
 	Planet * p = new Planet((rand() % 3000 + 1));
 	list->insert(3, p);
-	cout << "ran once" << endl;
 	current_planets++;
-	return p->getID();	
+	return p->getID();
 }
 
 bool Starlist::removePlanet(int id){
@@ -96,7 +95,7 @@ bool Starlist::removePlanet(int id){
 
 	for(int i = 0; i < current_planets; i++){
 		tempPlanet = list->read(i);
-		
+
 		if(tempPlanet->getID() == id){
 			current_planets--;
 			return list->remove(i);
@@ -138,4 +137,3 @@ void Starlist::printStarInfo(){
 }
 
 }
-

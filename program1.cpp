@@ -162,10 +162,13 @@ int main(){
     list = NULL;
     cerr << "\n\t\tTest #13 Passed...\n\n";
 
+
     cerr << "\n\t=========Test #14: Star Classes ===========\n\n";
     Starlist * sl = new Starlist();
     assert(sl->getCurrentNumPlanets() == 0);
+
     id_list[0] = sl->addPlanet();
+
     assert(sl->getCurrentNumPlanets() == 1);
     p = sl->getPlanet(id_list[0]);
     int pos = p->getPos();
@@ -174,18 +177,23 @@ int main(){
 
     Starvector * sv = new Starvector();
     assert(sv->getCurrentNumPlanets() == 0);
+
     id_list[1] = sv->addPlanet();
+
     assert(sv->getCurrentNumPlanets() == 1);
     p = sv->getPlanet(id_list[1]);
     pos = p->getPos();
     sv->orbit();
     assert(p->getPos() == (pos + 1) % 360);
 
+
     //add 200 more planets to each
     for(int i = 0; i < 200; i+=2){
         id_list[i] = sv->addPlanet();
         id_list[i+1] = sl->addPlanet();
     }
+
+
     //delete 10 random planets in the sun
     for(int i = 0; i < 50; i++){
         int rand_id = (rand() % (200));

@@ -30,6 +30,7 @@ void List::insert(int index, Planet* p){
 
 	if(index < 0) return;
 
+
 	Node* newNode = new Node();
 	newNode->planet = p;
 
@@ -54,8 +55,8 @@ void List::insert(int index, Planet* p){
 
 	//If neither of the above cases, traverse the list
 	//and input into the correct location
-
 	for(int i = 0; i < index - 1; i++){
+
 		nodeBehind = nodeBehind->next;
 	}
 
