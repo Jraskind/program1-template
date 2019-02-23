@@ -85,9 +85,17 @@ Planet* List::read(int index){
 bool List::remove(int index){
 	if (index > size() || index < 0) return false;
 
+	if(this->headPtr == this->tailPtr){
+		delete this->headPtr->planet;
+		delete this->headPtr;
+		headPtr = NULL;
+		tailPtr = NULL;
+		return true;
+	}
 
 	Node* nodeAhead = this->tailPtr;
 	Node* nodeBehind = this->headPtr;
+
 	for(int i = 0; i < index - 1; i++){
 		nodeBehind = nodeBehind->next;
 	}

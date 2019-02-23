@@ -24,7 +24,7 @@ long Starvector::addPlanet(){
 	return p->getID();
 }
 
-bool Starvector::removePlanet(int id){
+bool Starvector::removePlanet(long id){
 	Planet * tempPlanet = NULL;
 
 	for(int i = 0; i < current_planets; i++){
@@ -42,7 +42,7 @@ bool Starvector::removePlanet(int id){
 }
 
 
-Planet * Starvector::getPlanet(int id){
+Planet * Starvector::getPlanet(long id){
 	Planet * tempPlanet = NULL;
 	for(int i = 0; i < current_planets; i++){
 		tempPlanet = vect->read(i);
@@ -76,21 +76,21 @@ void Starvector::printStarInfo(){
 
 Starlist::Starlist(){
 	list = new List();
-	this->current_planets = 0;
+	current_planets = 0;
 }
 
 Starlist::~Starlist(){
 	delete list;
 }
 
-long Starlist::addPlanet(){
+long int Starlist::addPlanet(){
 	Planet * p = new Planet((rand() % 3000 + 1));
 	list->insert(3, p);
 	current_planets++;
 	return p->getID();
 }
 
-bool Starlist::removePlanet(int id){
+bool Starlist::removePlanet(long id){
 	Planet * tempPlanet = NULL;
 
 	for(int i = 0; i < current_planets; i++){
@@ -106,13 +106,12 @@ bool Starlist::removePlanet(int id){
 	return false;
 }
 
-Planet* Starlist::getPlanet(int id){
-	Planet * tempPlanet = NULL;
+Planet* Starlist::getPlanet(long id){
+	Planet * tempPlanet;
 	for(int i = 0; i < current_planets; i++){
 		tempPlanet = list->read(i);
 		if(tempPlanet->getID() == id) return tempPlanet;
 	}
-
 	return NULL;
 }
 

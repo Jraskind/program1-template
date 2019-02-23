@@ -3,7 +3,7 @@
 #include "Planet.h"
 #include "Vector.h"
 #include "List.h"
-/* 
+/*
 
     Starvector()
         Initialize memory
@@ -35,8 +35,8 @@ public:
 	Starvector();
 	~Starvector();
 	long addPlanet();
-    	bool removePlanet(int);
-    	Planet * getPlanet(int);
+    	bool removePlanet(long);
+    	Planet * getPlanet(long);
    	void orbit();
     	void printStarInfo();
     	unsigned int getCurrentNumPlanets(){return current_planets;};
@@ -50,8 +50,8 @@ public:
 	Starlist();
 	~Starlist();
 	long addPlanet();
-	bool removePlanet(int);
-	Planet* getPlanet(int);
+	bool removePlanet(long);
+	Planet* getPlanet(long);
 	void orbit();
 	void printStarInfo();
 	unsigned int getCurrentNumPlanets(){return current_planets;};

@@ -169,6 +169,7 @@ int main(){
 
     id_list[0] = sl->addPlanet();
 
+
     assert(sl->getCurrentNumPlanets() == 1);
     p = sl->getPlanet(id_list[0]);
     int pos = p->getPos();
@@ -192,7 +193,6 @@ int main(){
         id_list[i] = sv->addPlanet();
         id_list[i+1] = sl->addPlanet();
     }
-
 
     //delete 10 random planets in the sun
     for(int i = 0; i < 50; i++){
