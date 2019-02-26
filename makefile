@@ -20,7 +20,7 @@ $(V).o:	$(V).cpp
 $(S).o:	$(S).cpp
 	g++ -c $(CFLAGS) $(S).cpp -o $(S).o
 
-$(L).o:
+$(L).o: $(L).cpp
 	g++ -c $(CFLAGS) $(L).cpp -o $(L).o
 
 run: all
